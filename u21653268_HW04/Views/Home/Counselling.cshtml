@@ -1,0 +1,43 @@
+﻿@model List<u21653268_HW04.Models.Session>
+@{
+    ViewBag.Title = "Counselling";
+}
+<div class="container">
+    <h1>Counselling</h1>
+    <h3>Sessions available for booking</h3>
+    <h5 class="text-muted">If you need someone to talk to</h5>
+
+    <br />
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3">
+            @foreach (var session in Model)
+            {
+                <div class="col mb-3">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="@session.ImageURL" alt="Image" />
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">@session.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@session.GetInfo()</h6>
+                            <p class="card-text">@session.Description</p>
+
+                            @if (session.Refund)
+                            {
+                                <h6 class="card-subtitle mb-2 text-muted">Refunds can be given if you are unable to make it</h6>
+                            }
+                            else
+                            {
+                                <h6 class="card-subtitle mb-2 text-muted">No refunds are given if you are unable to make it</h6>
+                            }
+
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary rounded-pill">
+                                <a class="btn btn-default text-white" href="/Home/Contact">Book Now</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
